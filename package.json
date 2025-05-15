@@ -1,0 +1,21 @@
+{
+  "name": "threejs-scene-mirror",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepare": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@types/three": "^0.176.0",
+    "three": "^0.176.0"
+  }
+}
