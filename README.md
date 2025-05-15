@@ -5,7 +5,7 @@ A package that generates an HTML mirror of a Three.js scene for testing and debu
 ## Installation
 
 ```bash
-npm install <insert repo>
+npm install https://github.com/ethantabbert/threejs-scene-mirror
 ```
 
 ## Usage
