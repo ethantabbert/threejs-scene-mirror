@@ -50,7 +50,6 @@ const sceneMirror = initEspressoMirror(scene, camera);
 const selectedObject = scene.getObjectByName("Red Box");
 if (selectedObject) {
   sceneMirror.setSelectedObject(selectedObject);
-  const metadata = sceneMirror.getAllObjectMetadata(selectedObject);
-  console.log(metadata);
+  console.log(selectedObject);
 }
 ```

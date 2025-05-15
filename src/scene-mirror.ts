@@ -34,20 +34,6 @@ export class SceneMirror {
     this.render();
   }
 
-  public getAllObjectMetadata(object: THREE.Object3D): THREE.Object3DJSON {
-    return object.toJSON();
-  }
-
-  public getSelectedObjectMetadata(): Record<string, any> | null {
-    if (!this.selectedObject) return null;
-    return {
-      id: this.selectedObject.id,
-      name: this.selectedObject.name || this.selectedObject.type,
-      position: this.selectedObject.position,
-      // add other metadata
-    };
-  }
-
   private render(): void {
     const objects = this.scene.children;
     let html = `<ul style="list-style: none; padding: 0;">`;
@@ -75,10 +61,7 @@ export class SceneMirror {
         if (object) {
           this.setSelectedObject(object);
           // emit an event or callback with metadata here
-          console.log(
-            "Selected object raw metadata:",
-            this.getAllObjectMetadata(object)
-          );
+          console.log("Selected object raw metadata:", object);
         }
       })
     );
