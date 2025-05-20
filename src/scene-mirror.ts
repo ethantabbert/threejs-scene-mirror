@@ -1,23 +1,13 @@
 import * as THREE from "three";
 
-export interface SceneMirrorOptions {
-  camera?: THREE.Camera;
-}
-
 export class SceneMirror {
   private scene: THREE.Scene;
   private container: HTMLElement;
-  private options: SceneMirrorOptions;
   private selectedObject: THREE.Object3D | null = null;
 
-  constructor(
-    scene: THREE.Scene,
-    container: HTMLElement,
-    options: SceneMirrorOptions = {}
-  ) {
+  constructor(scene: THREE.Scene, container: HTMLElement) {
     this.scene = scene;
     this.container = container;
-    this.options = options;
     this.setupUI();
   }
 
@@ -39,8 +29,9 @@ export class SceneMirror {
     let html = `<ul style="list-style: none; padding: 0;">`;
     objects.forEach((obj) => {
       const isSelected = obj === this.selectedObject;
-      html += `<li 
-                data-object-id="${obj.id}" 
+      html += `<li
+                data-test-id="${obj.name || obj.type}"
+                data-object-id="${obj.id}"
                 style="
                     padding: 4px;
                     margin: 2px 0;
@@ -53,7 +44,7 @@ export class SceneMirror {
     html += `</ul>`;
     this.container.innerHTML = html;
 
-    this.container.querySelectorAll("[data-object-id]").forEach((item) =>
+    this.container.querySelectorAll("[data-test-id]").forEach((item) =>
       item.addEventListener("click", (event) => {
         const target = event.currentTarget as HTMLElement;
         const id = parseInt(target.getAttribute("data-object-id") || "", 10);
